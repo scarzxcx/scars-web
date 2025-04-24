@@ -1,0 +1,121 @@
+
+/* Avril Lavigne Grunge-Punk Style */
+body {
+  font-family: "Anton", "Courier New", monospace;
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); /* Subtle texture */
+}
+
+header {
+  background-color: black;
+  color: #ff0000;
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 3rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 white, -3px -3px 0 #ff0000;
+  position: relative;
+}
+
+header::before {
+  content: "★";
+  color: #ff0000;
+  font-size: 6rem;
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+main {
+  margin: 2rem auto;
+  max-width: 700px;
+  padding: 2rem;
+  background: #1a1a1a;
+  border: 3px solid #ff0000;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+main::before {
+  content: "";
+  display: block;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    white,
+    white 10px,
+    black 10px,
+    black 20px
+  );
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: "Permanent Marker", cursive;
+  color: #ff0000;
+  font-size: 2rem;
+  text-transform: uppercase;
+  border-bottom: 3px solid #ff0000;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0 black;
+}
+
+textarea {
+  margin-bottom: 1rem;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  border: 2px solid #ff0000;
+  border-radius: 4px;
+  resize: none;
+}
+
+button {
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #ff0000;
+  color: white;
+  border: 3px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 black, -3px -3px 0 white;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  color: #ff0000;
+  border: 3px solid #ff0000;
+  box-shadow: 4px 4px 0 #ff0000, -4px -4px 0 black;
+  transform: scale(1.1);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #262626;
+  margin: 0.5rem 0;
+  padding: 12px;
+  border: 2px solid #ff0000;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 black, -2px -2px 0 #ff0000;
+  font-family: "Courier New", monospace;
+}
+
+li:hover {
+  background: #1a1a1a;
+  color: #ff0000;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}

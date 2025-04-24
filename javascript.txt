@@ -1,0 +1,57 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const journalForm = document.getElementById("journalForm");
+  const journalEntry = document.getElementById("journalEntry");
+  const entriesList = document.getElementById("entriesList");
+  const moreLikeThisSection = document.getElementById("moreLikeThis");
+  const moreLikeThisList = document.getElementById("moreLikeThisList");
+
+  // Load saved entries from local storage
+  const savedEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+  savedEntries.forEach(addEntryToList);
+
+  journalForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const entryText = journalEntry.value.trim();
+    if (entryText) {
+      const entry = { text: entryText, date: new Date().toLocaleString() };
+      savedEntries.push(entry);
+      localStorage.setItem("journalEntries", JSON.stringify(savedEntries));
+      addEntryToList(entry);
+      journalEntry.value = "";
+    }
+  });
+
+  function addEntryToList(entry) {
+    const li = document.createElement("li");
+    li.textContent = `${entry.date}: ${entry.text}`;
+    li.addEventListener("click", () => showMoreLikeThis(entry.text));
+    entriesList.appendChild(li);
+  }
+
+  function showMoreLikeThis(currentText) {
+    // Clear the "More Like This" list
+    moreLikeThisList.innerHTML = "";
+
+    // Filter entries that are similar to the current one
+    const similarEntries = savedEntries.filter(entry => 
+      entry.text.includes(currentText) && entry.text !== currentText
+    );
+
+    // If no similar entries found, hide the section
+    if (similarEntries.length === 0) {
+      moreLikeThisSection.classList.add("hidden");
+      return;
+    }
+
+    // Add similar entries to the "More Like This" list
+    similarEntries.forEach(entry => {
+      const li = document.createElement("li");
+      li.textContent = `${entry.date}: ${entry.text}`;
+      moreLikeThisList.appendChild(li);
+    });
+
+    // Show the "More Like This" section
+    moreLikeThisSection.classList.remove("hidden");
+  }
+});
